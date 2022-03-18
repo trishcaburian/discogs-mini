@@ -1,0 +1,47 @@
+.box {
+    box-shadow: 3px 3px 5px black;
+    margin: 20px;
+    /*margin-left: 25px;*/
+    padding: 15px;
+    float: left;
+    width: 43vh;
+    border-radius: 5px;
+    background-color: #f3f3f3;
+    white-space: pre-wrap;
+}
+
+.category_label {
+    font-weight: bold;
+    padding: 10px 0 10px 0;
+    font-size: 20px;
+    /*line-height: 35px;*/
+}
+
+.item_card {
+    background-color: #ffffff;
+    overflow: hidden;
+    height: 1%;
+    margin-bottom: 5px;
+}
+
+.album_art {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.album_title {
+    padding: 8% 5%;
+    font-weight: bold;
+    font-size: 17px;
+    font-size: 1vw;
+    width: 13vw;
+    overflow-wrap: anywhere;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.add_button {
+    float: right;
+    padding-bottom: 10px;
+    line-height: 10px;
+}
