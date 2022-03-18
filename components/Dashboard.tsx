@@ -4,10 +4,23 @@ import { supabase } from "../utils/supabaseClient";
 import Status from "./Interfaces/Status";
 import { DragDropContext } from 'react-beautiful-dnd';
 import Item from "./Interfaces/Item";
+import ItemEditPopup from "./HomeItems/ItemEditPopup";
 
 const Dashboard = () => {
     const [statuses, setStatuses] = useState<object | Status>({});
     const [ updateFlag, setUpdateFlag ] = useState<boolean>(false);
+    const [ createNew, setCreateNew ] = useState<boolean>(false);
+
+    const [open, setOpen] = useState<boolean>(false);
+
+    const handleOpenAdd = () => {
+        setOpen(true);
+        setCreateNew(true);
+    }
+    const handleClose = () => {
+        setOpen(false);
+        setCreateNew(false);
+    }
 
     useEffect(() => {
        const fetchData = async () => {
@@ -85,9 +98,11 @@ const Dashboard = () => {
           <DragDropContext onDragEnd={handleOnDragEnd}>
             {Object.keys(statuses).map((key, index) => {
                 // @ts-ignore
-                return <Itembox key={key} status={statuses[key]}/>
+                return <Itembox key={key} status={statuses[key]} handleOpenForm={handleOpenAdd}/>
             })}
           </DragDropContext>
+
+          <ItemEditPopup is_add={createNew} open={open} handleClose={handleClose} statuses={statuses}/>
       </div>
     );
 }

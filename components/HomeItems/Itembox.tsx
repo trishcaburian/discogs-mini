@@ -7,14 +7,18 @@ import {supabase} from "../../utils/supabaseClient";
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import {Button} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
+import ItemEditPopup from "./ItemEditPopup";
+import { Modal } from "@mui/material";
 
-const Itembox = ( { status } : { status: Status } ) => {
+const Itembox = ( { status, handleOpenForm } : { status: Status, handleOpenForm: any } ) => {
+
+    const [ showAddItem, setShowAddItem ] = useState<boolean>(false);
 
     return (
         <div className={itemStyles.box}>
             <div className={itemStyles.category_label}>
                 <span>{status.name}</span>
-                <Button size="small" color="secondary" className={itemStyles.add_button}>
+                <Button onClick={handleOpenForm} size="small" color="secondary" className={itemStyles.add_button}>
                     <AddIcon fontSize={"small"} /> Add
                 </Button>
             </div>
@@ -30,6 +34,8 @@ const Itembox = ( { status } : { status: Status } ) => {
                     </div>
                 )}
             </Droppable>
+
+            {/*<ItemEditPopup is_add={true} open={open} handleClose={handleClose} handleOpen={handleOpen}></ItemEditPopup>*/}
         </div>
     );
 }
