@@ -4,7 +4,9 @@ import Item from "../Interfaces/Item";
 import { Draggable } from 'react-beautiful-dnd';
 
 const ItemCard = ({ album } : { album: Item,  }) => {
-    // change Draggable index to something else!
+    // add a "..." button that shows a list of the following actions:
+    // More: shows a popup with the additional item info. Has a button "Edit" to edit this info
+    // Delete: shows popup "Do you really want to delete this item?".... etc.
     return (
         <Draggable key={album.id} draggableId={album.title} index={album.list_index}>
             {(provided) => (
